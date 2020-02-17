@@ -4,18 +4,14 @@ import os.path as op
 import json
 import logging
 
-import flywheel
 from gear_toolkit import gear_toolkit_context
-from gear_toolkit import command_line
 from utils import args
+
 
 log = logging.getLogger(__name__)
 
-if __name__ == '__main__':
-    with gear_toolkit_context.GearToolkitContext() as context:
-        # Activate custom logger
-        context.init_logging()
 
+def main(context):
         context.log_config()
         with open('/tmp/gear_environ.json','r') as f:
             environ = json.load(f)
@@ -30,7 +26,16 @@ if __name__ == '__main__':
         except Exception as e:
             context.log.fatal(e,)
             context.log.fatal('Error executing pydeface-gear.')
-            os.sys.exit(1)
+            return 1
 
         context.log.info("pydeface-gear completed Successfully!")
-        os.sys.exit(0)
+        return 0
+
+
+if __name__ == '__main__':
+    with gear_toolkit_context.GearToolkitContext() as gear_context:
+        gear_context.init_logging()
+        exit_status = main(gear_context)
+
+    log.info('exit_status is %s', exit_status)
+    os.sys.exit(exit_status)        

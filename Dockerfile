@@ -22,9 +22,9 @@ RUN head -n 7 /neurodocker/startup.sh >> ~/.bashrc
 # within bash. conda does not have a sh-shell configuration
 RUN /bin/bash -c "\
     source activate neuro && \
-    pip install flywheel-sdk nibabel &&\
-    git clone https://gitlab.com/flywheel-io/public/gear-toolkit.git &&\
-    pip install -e ./gear-toolkit/ \
+    pip install \
+    flywheel-sdk==11.0.1 \
+    flywheel-gear-toolkit==0.0.1.dev1 \
     "
 
 # Make directory for flywheel spec (v0):

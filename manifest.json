@@ -50,6 +50,7 @@
   },
   "config": {
     "cost": {
+      "type": "string",
       "default": "mutualinfo",
       "description": "FSL-FLIRT cost function",
       "enum": [
@@ -60,18 +61,17 @@
         "leastsq",
         "labeldiff",
         "bbr"
-      ],
-      "type": "string"
+      ]
     },
     "nocleanup": {
-      "default": "false",
+      "type": "boolean",
       "description": "Do not cleanup temporary files. Off by default.",
-      "type": "boolean"
+      "default": "false"
     },
     "verbose": {
-      "default": "false",
+      "type": "boolean",
       "description": "Show additional status prints. Off by default.",
-      "type": "boolean"
+      "default": "false"
     }
   },
   "command": "/flywheel/v0/run.py",
