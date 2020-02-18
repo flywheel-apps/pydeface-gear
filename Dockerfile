@@ -23,8 +23,8 @@ RUN head -n 7 /neurodocker/startup.sh >> ~/.bashrc
 RUN /bin/bash -c "\
     source activate neuro && \
     pip install \
-    flywheel-sdk==11.0.1 \
-    flywheel-gear-toolkit==0.0.1.dev1 \
+    flywheel-sdk==10.7.4 \
+    flywheel-gear-toolkit==0.1.0.rc1 \
     "
 
 # Make directory for flywheel spec (v0):

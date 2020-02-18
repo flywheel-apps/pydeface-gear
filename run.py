@@ -12,24 +12,26 @@ log = logging.getLogger(__name__)
 
 
 def main(context):
-        context.log_config()
-        with open('/tmp/gear_environ.json','r') as f:
-            environ = json.load(f)
+    context.log_config()
+    with open('/tmp/gear_environ.json','r') as f:
+        environ = json.load(f)
 
-        # Build, Validate, and execute Parameters Hello World 
-        try:
-            # build the command string
-            params = args.build(context)
-            args.validate(params)
-            args.execute(context, params, environ=environ)
+    # Build, Validate, and execute Parameters Hello World 
+    try:
+        # build the command string
+        params = args.build(context)
+        # validate parameters (Not currently used.)
+        # args.validate(params)
+        # Execute on those parameters.
+        args.execute(context, params, environ=environ)
 
-        except Exception as e:
-            context.log.fatal(e,)
-            context.log.fatal('Error executing pydeface-gear.')
-            return 1
+    except Exception as e:
+        context.log.fatal(e,)
+        context.log.fatal('Error executing pydeface-gear.')
+        return 1
 
-        context.log.info("pydeface-gear completed Successfully!")
-        return 0
+    context.log.info("pydeface-gear completed Successfully!")
+    return 0
 
 
 if __name__ == '__main__':
