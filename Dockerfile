@@ -19,7 +19,7 @@ COPY requirements.txt $FLYWHEEL/
 RUN pip install -r requirements.txt
 
 # Copy executable, manifest, and tools to Gear
-COPY run.py manifest.json utils ${FLYWHEEL}/
+COPY run.py manifest.json ${FLYWHEEL}/
 COPY utils ${FLYWHEEL}/utils
 RUN chmod a+x ${FLYWHEEL}/run.py
 
