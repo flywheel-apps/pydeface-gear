@@ -1,5 +1,6 @@
-import os.path as op
 from collections import OrderedDict
+import os.path as op
+from pathlib import Path
 
 from gear_toolkit.command_line import build_command_list, exec_command
 
@@ -12,21 +13,11 @@ def build(context):
     for key in config.keys():
         params[key] = config[key]
 
-    infile = context.get_input_path('infile')
+    infile = Path(context.get_input_path('infile'))
 
     params['outfile'] = context.output_dir / \
-        op.basename(infile).replace('.nii.gz', '_defaced.nii.gz')
+        infile.name.replace('.nii.gz', '_defaced.nii.gz')
     return params
-
-
-def validate(params):
-    """
-    validate the given parameters against potential conflicts
-
-    Args:
-        params (dict): dictionary of pydeface parameters
-    """
-    pass
 
 
 def execute(context, params, dry_run=False, environ=None):

@@ -1,4 +1,3 @@
-
 # Inheriting from established docker image:
 FROM poldracklab/pydeface:37-2e0c2d
 
@@ -9,42 +8,22 @@ LABEL maintainer="Flywheel <support@flywheel.io>"
 # poldracklab/pydeface:37-2e0c2d leaves it in the "neuro" user
 USER root
 
-# Install APT dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \ 
-    zip  && \ 
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # For interactive docker... Not needed in gear execution
 RUN head -n 7 /neurodocker/startup.sh >> ~/.bashrc
 
-# All the neuro-conda environment commands must be executed
-# within bash. conda does not have a sh-shell configuration
-RUN /bin/bash -c "\
-    source activate neuro && \
-    pip install \
-    flywheel-sdk==10.7.4 \
-    flywheel-gear-toolkit==0.1.0.rc1 \
-    "
-
-# Make directory for flywheel spec (v0):
 ENV FLYWHEEL /flywheel/v0
 WORKDIR ${FLYWHEEL}
-# Copy executable/manifest to Gear
-COPY run.py ${FLYWHEEL}/run.py
-RUN chmod a+x run.py
-COPY utils utils
-COPY manifest.json ${FLYWHEEL}/manifest.json
 
-# ENV preservation for Flywheel Engine
-# Again, these env are preserved in the bash shell
-RUN /bin/bash -c "\
-    source activate neuro && \
-    source /neurodocker/startup.sh && \
-    python -c \
-    \"import os, json; f = open('/tmp/gear_environ.json', 'w');\
-    json.dump(dict(os.environ), f)\"\
-    "
+ENV PATH=/opt/conda/envs/neuro/bin/:$PATH
+COPY requirements.txt $FLYWHEEL/
+RUN pip install -r requirements.txt
+
+# Copy executable, manifest, and tools to Gear
+COPY run.py manifest.json utils ${FLYWHEEL}/
+COPY utils ${FLYWHEEL}/utils
+RUN chmod a+x ${FLYWHEEL}/run.py
+
+RUN python -c "import os, json; f = open('/tmp/gear_environ.json', 'w');json.dump(dict(os.environ), f)"
 
 # Configure entrypoint
 ENTRYPOINT ["/flywheel/v0/run.py"]

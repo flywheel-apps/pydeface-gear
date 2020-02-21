@@ -4,7 +4,7 @@
   "description": "A gear to remove facial structure from MRI images.",
   "author": "Flywheel",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "license": "Other",
+  "license": "MIT",
   "url": "https://github.com/flywheel-apps/test-gear",
   "source": "https://github.com/flywheel-apps/pydeface-gear",
   "cite": "https://github.com/poldracklab/pydeface",
