@@ -23,7 +23,5 @@ COPY run.py manifest.json ${FLYWHEEL}/
 COPY utils ${FLYWHEEL}/utils
 RUN chmod a+x ${FLYWHEEL}/run.py
 
-RUN python -c "import os, json; f = open('/tmp/gear_environ.json', 'w');json.dump(dict(os.environ), f)"
-
 # Configure entrypoint
 ENTRYPOINT ["/flywheel/v0/run.py"]

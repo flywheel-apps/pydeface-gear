@@ -20,7 +20,7 @@ def build(context):
     return params
 
 
-def execute(context, params, dry_run=False, environ=None):
+def execute(context, params, dry_run=False):
     # Get Params
     command = ['pydeface']
 
@@ -30,4 +30,4 @@ def execute(context, params, dry_run=False, environ=None):
     # Extend with positional arguments
     command.append(context.get_input_path('infile'))
 
-    exec_command(command, dry_run=dry_run, environ=environ)
+    exec_command(command, dry_run=dry_run)

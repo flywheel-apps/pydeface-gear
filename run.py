@@ -12,20 +12,16 @@ log = logging.getLogger(__name__)
 
 
 def main(context):
-    context.log_config()
-    with open('/tmp/gear_environ.json', 'r') as f:
-        environ = json.load(f)
-
     # Build and Execute Parameters
     try:
         # build the command string
         params = args.build(context)
 
         # Execute on those parameters.
-        args.execute(context, params, environ=environ)
+        args.execute(context, params)
 
     except Exception as e:
-        context.log.fatal(e,)
+        context.log.exception(e)
         context.log.fatal('Error executing pydeface-gear.')
         return 1
 
@@ -36,6 +32,7 @@ def main(context):
 if __name__ == '__main__':
     with gear_toolkit_context.GearToolkitContext() as gear_context:
         gear_context.init_logging()
+        gear_context.log_config()
         exit_status = main(gear_context)
 
     log.info('exit_status is %s', exit_status)
