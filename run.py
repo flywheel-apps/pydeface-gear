@@ -39,4 +39,4 @@ if __name__ == '__main__':
         exit_status = main(gear_context)
 
     log.info('exit_status is %s', exit_status)
-    os.sys.exit(exit_status)    
+    os.sys.exit(exit_status)

@@ -30,4 +30,4 @@ def execute(context, params, dry_run=False, environ=None):
     # Extend with positional arguments
     command.append(context.get_input_path('infile'))
 
-    exec_command(command, environ=environ)
+    exec_command(command, dry_run=dry_run, environ=environ)
