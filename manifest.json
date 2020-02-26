@@ -66,12 +66,12 @@
     "nocleanup": {
       "type": "boolean",
       "description": "Do not cleanup temporary files. True by default.",
-      "default": "true"
+      "default": true
     },
     "verbose": {
       "type": "boolean",
       "description": "Show additional status prints. True by default.",
-      "default": "true"
+      "default": true
     }
   },
   "command": "/flywheel/v0/run.py",
