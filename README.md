@@ -24,5 +24,5 @@ The source code of pydeface can be found at [github](https://github.com/poldrack
 ### parameters
 
 * cost: FSL-FLIRT cost function. "mutualinfo" default.
-* nocleanup: Do not cleanup temporary files. Off by default.
-* verbose: Show additional status prints. Off by default.
+* nocleanup: Do not cleanup temporary files. On by default.
+* verbose: Show additional status prints. On by default.
