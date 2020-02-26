@@ -8,12 +8,12 @@
   "url": "https://github.com/flywheel-apps/test-gear",
   "source": "https://github.com/flywheel-apps/pydeface-gear",
   "cite": "https://github.com/poldracklab/pydeface",
-  "version": "0.0.1-dev-f",
+  "version": "0.1.0",
   "custom": {
-    "docker-image": "flywheel/pydeface-gear:0.0.1-dev-f",
+    "docker-image": "flywheel/pydeface-gear:0.1.0",
     "gear-builder": {
       "category": "analysis",
-      "image": "flywheel/pydeface-gear:0.0.1-dev-f"
+      "image": "flywheel/pydeface-gear:0.1.0"
     }
   },
   "inputs": {
@@ -65,13 +65,13 @@
     },
     "nocleanup": {
       "type": "boolean",
-      "description": "Do not cleanup temporary files. Off by default.",
-      "default": "false"
+      "description": "Do not cleanup temporary files. True by default.",
+      "default": "true"
     },
     "verbose": {
       "type": "boolean",
-      "description": "Show additional status prints. Off by default.",
-      "default": "false"
+      "description": "Show additional status prints. True by default.",
+      "default": "true"
     }
   },
   "command": "/flywheel/v0/run.py",

@@ -27,7 +27,7 @@ def execute(context, params, dry_run=False):
     # Build command-line parameters
     command = build_command_list(command, params)
 
-    # Extend with positional arguments
+    # Extend with positional argument
     command.append(context.get_input_path('infile'))
 
     exec_command(command, dry_run=dry_run)
