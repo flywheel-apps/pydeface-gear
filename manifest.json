@@ -8,12 +8,12 @@
   "url": "https://github.com/flywheel-apps/test-gear",
   "source": "https://github.com/flywheel-apps/pydeface-gear",
   "cite": "https://github.com/poldracklab/pydeface",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "custom": {
-    "docker-image": "flywheel/pydeface-gear:0.1.0",
+    "docker-image": "flywheel/pydeface-gear:1.0.0",
     "gear-builder": {
       "category": "analysis",
-      "image": "flywheel/pydeface-gear:0.1.0"
+      "image": "flywheel/pydeface-gear:1.0.0"
     }
   },
   "inputs": {
